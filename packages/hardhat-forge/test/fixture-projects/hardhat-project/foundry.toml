@@ -1,9 +1,28 @@
 [default]
+ast = true
 src = 'src'
-out = 'out'
+out = 'build/artifacts'
 libs = ['lib']
-
-extra_output = ['devdoc', 'userdoc', 'metadata', 'storageLayout']
+cache = true
+cache_path = 'build/cache'
+extra_output = [
+    'abi',
+    'evm.bytecode',
+    'evm.deployedBytecode',
+    'evm.methodIdentifiers',
+    'evm.gasEstimates',
+    'metadata',
+    'devdoc',
+    'userdoc',
+    'storageLayout',
+]
 build_info = true
+constant_optimizer = true
+optimizer = true
+
+[default.optimizer_details]
+yul = true
+[default.optimizer_details.yulDetails]
+stackAllocation = true
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
