@@ -1,6 +1,6 @@
 {
     "name": "root",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "author": "foundry-rs authors",
     "license": "SEE LICENSE IN EACH PACKAGE'S LICENSE FILE",
     "private": true,
@@ -24,7 +24,6 @@
         "lint:fix": "wsrun --exclude-missing --stages lint:fix && yarn prettier --write",
         "prettier": "prettier *.md \"{docs,.github}/**/*.{md,yml}\"",
         "release": "yarn build && yarn changeset publish"
-
     },
     "dependencies": {},
     "resolutions": {
