@@ -18,7 +18,7 @@ describe("Integration tests", function () {
     it("Should return config", async function () {
       const config = await this.hre.run("forge:config");
       assert.equal(config.src, "src");
-      assert.equal(config.out, "out");
+      assert.equal(config.out, "build/artifacts");
     });
 
     it("Should populare hre.config.foundry", async function () {

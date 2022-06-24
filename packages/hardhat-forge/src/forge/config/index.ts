@@ -1,6 +1,6 @@
 // bindings for forge config
 
-import * as foundryup from "@foundry-rs/easy-foundryup";
+import * as foundryup from "@panukresko/easy-foundryup";
 import { spawn, spawnSync } from "child_process";
 import { task } from "hardhat/config";
 import { FoundryConfig } from "./config";
