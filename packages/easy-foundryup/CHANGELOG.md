@@ -1,5 +1,11 @@
 # @foundry-rs/easy-foundryup
 
+## 0.3.1
+
+### Patch Changes
+
+- a80df1a: plz
+
 ## 0.3.0
 
 ### Minor Changes

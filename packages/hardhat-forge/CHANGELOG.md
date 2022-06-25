@@ -1,5 +1,13 @@
 # @foundry-rs/hardhat-forge
 
+## 0.3.1
+
+### Patch Changes
+
+- a80df1a: plz
+- Updated dependencies [a80df1a]
+  - @panukresko/easy-foundryup@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes
