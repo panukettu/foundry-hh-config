@@ -1,5 +1,11 @@
 # @foundry-rs/easy-foundryup
 
+## 0.2.0
+
+### Minor Changes
+
+- 192135c: dependencies
+
 ## 0.1.3
 
 ### Patch Changes

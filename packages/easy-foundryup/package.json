@@ -1,6 +1,6 @@
 {
   "name": "@panukresko/easy-foundryup",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Install and manage foundryup",
   "homepage": "https://github.com/foundry-rs/hardhat",
   "repository": "github:foundry-rs/hardhat",
