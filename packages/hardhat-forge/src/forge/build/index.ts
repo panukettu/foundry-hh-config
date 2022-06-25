@@ -1,6 +1,9 @@
-import { task } from "hardhat/config";
+import fs from "fs-extra";
+import { task, subtask } from "hardhat/config";
+import { TASK_COMPILE_SOLIDITY_COMPILE } from "hardhat/builtin-tasks/task-names";
 import camelcaseKeys = require("camelcase-keys");
 import { NomicLabsHardhatPluginError } from "hardhat/internal/core/errors";
+import { getCacheDir } from "hardhat/internal/util/global-dir";
 import { registerCompilerArgs, registerProjectPathArgs } from "../common";
 import { ForgeBuildArgs, spawnBuild } from "./build";
 
@@ -17,8 +20,32 @@ registerProjectPathArgs(registerCompilerArgs(task("compile")))
   .setAction(async (args, hre, runSuper) => {
     const input = { ...args, ...(hre.config.foundry || {}) };
     const buildArgs = await getCheckedArgs(input);
+
+    const cacheVacuum = hre.config.foundry?.cacheVacuum ?? 0;
+    if (cacheVacuum > 0) {
+      // fresh
+      await fs.remove(hre.config.paths.cache);
+      await fs.remove(hre.config.paths.artifacts);
+    }
+    if (cacheVacuum > 1) {
+      /**
+       * macOS: ~/Library/Caches/MyApp-nodejs
+       * Windows: %LOCALAPPDATA%\MyApp-nodejs\Cache
+       * Linux: ~/.cache/MyApp-nodejs (or $XDG_CACHE_HOME/MyApp-nodejs)
+       */
+      await fs.remove(await getCacheDir());
+    }
+
     await spawnBuild(buildArgs);
-    await runSuper(args);
+
+    if (hre.config.foundry?.forgeOnly === true) {
+      // monkey style
+      subtask(TASK_COMPILE_SOLIDITY_COMPILE).setAction(async () => {
+        return;
+      });
+    } else {
+      await runSuper(args);
+    }
   });
 
 async function getCheckedArgs(args: any): Promise<ForgeBuildArgs> {

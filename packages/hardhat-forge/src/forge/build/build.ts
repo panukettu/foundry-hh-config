@@ -22,6 +22,8 @@ export declare interface ForgeBuildArgs extends CompilerArgs, ProjectPathArgs {
   offline?: boolean;
   viaIr?: boolean;
   buildInfo?: boolean;
+  forgeOnly?: boolean; // skip hh compile
+  cacheVacuum?: number; // 1 vacuums local hh folders, 2 does global clean  (compiler telemetry etc)
 }
 
 /** *

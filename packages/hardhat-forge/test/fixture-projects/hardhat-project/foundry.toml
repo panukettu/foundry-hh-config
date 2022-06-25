@@ -1,10 +1,10 @@
 [default]
 ast = true
 src = 'src'
-out = 'build/artifacts'
+out = 'forge/artifacts'
 libs = ['lib']
 cache = true
-cache_path = 'build/cache'
+cache_path = 'forge/cache'
 extra_output = [
     'abi',
     'evm.bytecode',

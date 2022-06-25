@@ -37,13 +37,13 @@ const config: HardhatUserConfig = {
   },
   defaultNetwork: "hardhat",
   paths: {
-    artifacts: "bin",
-    cache: "bin",
+    artifacts: "build/artifact",
+    cache: "cache",
     sources: "src/**/*",
   },
   foundry: {
     buildInfo: true,
-    cachePath: "build/cache",
+    cachePath: "forge/cache",
   },
 };
 

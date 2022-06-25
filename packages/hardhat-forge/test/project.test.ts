@@ -1,4 +1,10 @@
-import { assert } from "chai";
+import { assert, expect } from "chai";
+import {
+  TASK_CLEAN,
+  TASK_CLEAN_GLOBAL,
+} from "hardhat/builtin-tasks/task-names";
+import { getCacheDir } from "hardhat/internal/util/global-dir";
+import fsExtra from "fs-extra";
 import path from "path";
 import { useEnvironment, getAllFiles } from "./helpers";
 
@@ -18,10 +24,10 @@ describe("Integration tests", function () {
     it("Should return config", async function () {
       const config = await this.hre.run("forge:config");
       assert.equal(config.src, "src");
-      assert.equal(config.out, "build/artifacts");
+      assert.equal(config.out, "forge/artifacts");
     });
 
-    it("Should populare hre.config.foundry", async function () {
+    it("Should populate hre.config.foundry", async function () {
       assert.exists(this.hre.config.foundry);
       assert.typeOf(this.hre.config.foundry, "object");
     });
@@ -84,6 +90,67 @@ describe("Integration tests", function () {
       assert.exists(contract.evm.bytecode.object);
       assert.exists(contract.evm.deployedBytecode);
       assert.exists(contract.evm.deployedBytecode.object);
+    });
+
+    it("Should forge build only if forgeOnly is true", async function () {
+      this.hre.config.foundry = { forgeOnly: true };
+
+      const artifactFolder = this.hre.config.paths.artifacts;
+      await this.hre.run(TASK_CLEAN);
+      expect(await fsExtra.pathExists(artifactFolder)).to.eq(false);
+
+      await this.hre.run("compile");
+
+      expect(await fsExtra.pathExists(artifactFolder)).to.eq(false);
+
+      const config = await this.hre.run("forge:config");
+      const forgedFiles = await getAllFiles(config.src);
+
+      expect(forgedFiles.length).gt(0);
+    });
+
+    it("Should compile using both if forgeOnly is false", async function () {
+      this.hre.config.foundry = { forgeOnly: false };
+
+      const artifactFolder = this.hre.config.paths.artifacts;
+      await this.hre.run(TASK_CLEAN);
+      expect(await fsExtra.pathExists(artifactFolder)).to.eq(false);
+
+      await this.hre.run("compile");
+
+      expect(await fsExtra.pathExists(artifactFolder)).to.eq(true);
+
+      const config = await this.hre.run("forge:config");
+      const forgedFiles = await getAllFiles(config.src);
+      const hhFiles = await getAllFiles(artifactFolder);
+
+      expect(forgedFiles.length).gt(0);
+      expect(hhFiles.length).gt(0);
+    });
+
+    it("Should vacuum low powa", async function () {
+      this.hre.config.foundry = { cacheVacuum: 1, forgeOnly: true };
+      await this.hre.run(TASK_CLEAN, { global: true });
+
+      const artifactFolder = this.hre.config.paths.artifacts;
+      await this.hre.run("compile");
+
+      expect(await fsExtra.pathExists(artifactFolder)).to.eq(false);
+      expect(await fsExtra.pathExists(this.hre.config.paths.cache)).to.eq(
+        false
+      );
+    });
+
+    it("Should vacuum high powa", async function () {
+      this.hre.config.foundry = { cacheVacuum: 2, forgeOnly: true };
+      const globalCache = await getCacheDir();
+      await this.hre.run(TASK_CLEAN_GLOBAL, { global: true });
+
+      const hhFiles = await getAllFiles(globalCache);
+      expect(hhFiles.length).to.eq(0);
+      await this.hre.run("compile");
+
+      expect(await fsExtra.pathExists(globalCache)).to.eq(false);
     });
   });
 });
