@@ -1,5 +1,17 @@
 # @foundry-rs/hardhat
 
+## 0.2.1
+
+### Patch Changes
+
+- 76d0f68: fix imports
+- 9ec2391: bump ts-node, ethers and other shiiieet
+- Updated dependencies [76d0f68]
+- Updated dependencies [9ec2391]
+  - @panukresko/easy-foundryup@0.2.1
+  - @panukresko/hardhat-anvil@0.2.1
+  - @panukresko/hardhat-forge@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes

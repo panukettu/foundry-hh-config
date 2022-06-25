@@ -1,5 +1,12 @@
 # @foundry-rs/easy-foundryup
 
+## 0.2.1
+
+### Patch Changes
+
+- 76d0f68: fix imports
+- 9ec2391: bump ts-node, ethers and other shiiieet
+
 ## 0.2.0
 
 ### Minor Changes
