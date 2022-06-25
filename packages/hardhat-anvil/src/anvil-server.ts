@@ -1,6 +1,6 @@
 import { spawn } from "child_process";
 import debug from "debug";
-import { getAnvilCommand } from "@foundry-rs/easy-foundryup";
+import { getAnvilCommand } from "@panukresko/easy-foundryup";
 import { AnvilOptions } from "./anvil-service";
 
 const log = debug("hardhat::plugin::anvil::spawn");
