@@ -1,5 +1,16 @@
 # @foundry-rs/hardhat-forge
 
+## 0.2.0
+
+### Minor Changes
+
+- 192135c: dependencies
+
+### Patch Changes
+
+- Updated dependencies [192135c]
+  - @panukresko/easy-foundryup@0.2.0
+
 ## 0.1.4
 
 ### Patch Changes
