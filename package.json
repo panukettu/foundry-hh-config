@@ -1,32 +1,32 @@
 {
-    "name": "root",
-    "version": "0.0.1",
-    "author": "foundry-rs authors",
-    "license": "SEE LICENSE IN EACH PACKAGE'S LICENSE FILE",
-    "private": true,
-    "workspaces": [
-        "packages/*",
-        "docs"
-    ],
-    "devDependencies": {
-        "@changesets/cli": "^2.22.0",
-        "prettier": "2.4.1",
-        "shelljs": "^0.8.5",
-        "typescript": "~4.5.2",
-        "wsrun": "^5.2.2"
-    },
-    "scripts": {
-        "build": "tsc --build packages/hardhat-forge packages/hardhat-anvil packages/hardhat packages/easy-foundryup",
-        "watch": "tsc --build --watch packages/hardhat-anvil packages/hardhat-forgepackages/hardhat packages/easy-foundryup",
-        "clean": "wsrun --exclude-missing clean",
-        "test": "wsrun --exclude-missing test",
-        "lint": "wsrun --exclude-missing --stages lint && yarn prettier --check",
-        "lint:fix": "wsrun --exclude-missing --stages lint:fix && yarn prettier --write",
-        "prettier": "prettier *.md \"{docs,.github}/**/*.{md,yml}\"",
-        "release": "yarn build && yarn changeset publish"
-    },
-    "dependencies": {},
-    "resolutions": {
-        "**/antlr4": "4.7.1"
-    }
+  "name": "root",
+  "version": "0.0.1",
+  "author": "foundry-rs authors",
+  "license": "SEE LICENSE IN EACH PACKAGE'S LICENSE FILE",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.22.0",
+    "prettier": "2.4.1",
+    "shelljs": "^0.8.5",
+    "typescript": "4.7.2",
+    "wsrun": "^5.2.2"
+  },
+  "scripts": {
+    "build": "tsc --build packages/hardhat-forge packages/hardhat-anvil packages/hardhat packages/easy-foundryup",
+    "watch": "tsc --build --watch packages/hardhat-anvil packages/hardhat-forgepackages/hardhat packages/easy-foundryup",
+    "clean": "wsrun --exclude-missing clean",
+    "test": "wsrun --exclude-missing test",
+    "lint": "wsrun --exclude-missing --stages lint && yarn prettier --check",
+    "lint:fix": "wsrun --exclude-missing --stages lint:fix && yarn prettier --write",
+    "prettier": "prettier *.md \"{docs,.github}/**/*.{md,yml}\"",
+    "release": "yarn build && yarn changeset publish"
+  },
+  "dependencies": {},
+  "resolutions": {
+    "**/antlr4": "4.7.1"
+  }
 }
