@@ -1,5 +1,11 @@
 # @foundry-rs/easy-foundryup
 
+## 0.3.0
+
+### Minor Changes
+
+- hh compile bypass and cache purge
+
 ## 0.2.1
 
 ### Patch Changes

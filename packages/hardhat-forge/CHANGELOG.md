@@ -1,5 +1,16 @@
 # @foundry-rs/hardhat-forge
 
+## 0.3.0
+
+### Minor Changes
+
+- hh compile bypass and cache purge
+
+### Patch Changes
+
+- Updated dependencies
+  - @panukresko/easy-foundryup@0.3.0
+
 ## 0.2.1
 
 ### Patch Changes
