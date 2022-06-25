@@ -1,5 +1,11 @@
 # @foundry-rs/easy-foundryup
 
+## 0.1.3
+
+### Patch Changes
+
+- 85d78ee: hmmm
+
 ## 0.1.2
 
 ### Patch Changes

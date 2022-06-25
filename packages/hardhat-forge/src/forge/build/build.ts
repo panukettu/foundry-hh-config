@@ -1,6 +1,6 @@
 // bindings for forge build
 import { spawn as spawn } from "child_process";
-import * as foundryup from "@foundry-rs/easy-foundryup";
+import * as foundryup from "@panukresko/easy-foundryup";
 import {
   compilerArgs,
   CompilerArgs,

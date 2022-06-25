@@ -1,6 +1,6 @@
 // bindings for forge test
 import { spawn as spawn } from "child_process";
-import * as foundryup from '@panukresko/easy-foundryup";
+import * as foundryup from "@panukresko/easy-foundryup";
 import { buildArgs, ForgeBuildArgs } from "../build/build";
 import { envArgs, evmArgs, ForgeEvmArgs } from "../common";
 
