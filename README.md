@@ -1,4 +1,9 @@
----
+This repo is a fork of [foundry hardhat with config](https://github.com/tynes/hardhat-1/tree/feat/config-in-hardhat-config) with extra options:
+- `foundry.forgeOnly` skips native hardhat compilation
+- `foundry.cacheVacuum` purge hardhat cache:   
+-- `cacheVacuum: 1` delete artifacts and cache 
+-- `cacheVacuum: 2` delete artifacts, cache and global cache 
+
 
 This repo contains [hardhat](https://github.com/NomicFoundation/hardhat) plugins to use [foundry](https://github.com/foundry-rs/foundry/) tools in hardhat environments.
 
